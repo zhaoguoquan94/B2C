@@ -77,7 +77,7 @@ document.form1.webUserEntity.phone="";
 				
 				ArrayList<NBOrder> orderList = (ArrayList<NBOrder>)session.getAttribute("orderList_hwl"); 
 				for (NBOrder order : orderList){
-					NBUser user = db.getUserByID(order.getUserID());
+					NBUser user = db.getNBUserByID(new Integer(order.getUserID()));
 					Date orderDate = order.getOrderDate();
 					String stateString = "已支付";
 					if (order.getState()==0){
@@ -89,7 +89,7 @@ document.form1.webUserEntity.phone="";
 					<td><%=user.getEmail() %></td>
 					<td><%=orderDate.getYear()%>-<%=orderDate.getMonth()%>-<%=orderDate.getDate()%>&nbsp;<%=orderDate.getHours() %>:<%=orderDate.getMinutes() %>:<%=orderDate.getSeconds() %></td>
 					<td><%out.println(stateString); %></td>
-					<td><a href="order_info.html"><img src="../image/xq.gif" alt="详情" class="picture"></a></td>
+					<td><a href="order_info.html?orderId=<%=order.getOrderID() %>>"><img src="../image/xq.gif" alt="详情" class="picture"></a></td>
           		  </tr>
 			<%
 				} 

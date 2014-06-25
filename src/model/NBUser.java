@@ -10,7 +10,7 @@ public class NBUser {
 	private String password;
 	private int score;
 	private String level;//TODO
-
+	
 	public NBUser(int id,String email, String nickname, String password, int score,
 			Date registerDate,String level ) {
 		super();
@@ -108,7 +108,16 @@ public class NBUser {
 	public void setRegisterDate(Date registerDate) {
 		this.registerDate = registerDate;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "NBUser [id=" + id + ", email=" + email + ", nickname="
+				+ nickname + ", password=" + password + ", score=" + score
+				+ ", level=" + level + ", registerDate=" + registerDate + "]";
+	}
 
-
-
+	
+	
 }

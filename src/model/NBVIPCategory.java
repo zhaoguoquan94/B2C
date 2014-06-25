@@ -50,8 +50,17 @@ public class NBVIPCategory {
 	public void setScorePercentage(double scorePercentage) {
 		this.scorePercentage = scorePercentage;
 	}
-
-
-
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "NBVIPCategory [ID=" + ID + ", levelName=" + levelName
+				+ ", leastScore=" + leastScore + ", scorePercentage="
+				+ scorePercentage + "]";
+	}
+	
+	
+	
+	
 }

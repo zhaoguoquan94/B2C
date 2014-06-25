@@ -6,13 +6,13 @@ public class NBUserAddress {
 	/**
 	 * @return the userAddressID
 	 */
-	protected int getUserAddressID() {
+	public int getUserAddressID() {
 		return userAddressID;
 	}
 	/**
 	 * @param userAddressID the userAddressID to set
 	 */
-	protected void setUserAddressID(int userAddressID) {
+	public void setUserAddressID(int userAddressID) {
 		this.userAddressID = userAddressID;
 	}
 	private int  userID;
@@ -118,5 +118,16 @@ public class NBUserAddress {
 		this.mobilePhone = mobilePhone;
 		this.isActive = isActive;
 	}
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "NBUserAddress [userAddressID=" + userAddressID + ", userID="
+				+ userID + ", receiverName=" + receiverName + ", address="
+				+ address + ", postCode=" + postCode + ", telephone="
+				+ telephone + ", mobilePhone=" + mobilePhone + ", isActive="
+				+ isActive + "]";
+	}
+	
 }
