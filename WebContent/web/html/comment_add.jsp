@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page pageEncoding = "UTF-8"%>
 <html>
 <head>
 <title>BC2商城</title>
@@ -7,31 +8,13 @@
 </head>
 
 <body>
-<div id="container">
-	<div id="logalleft">
-		<div id="logalright">
-		<a href="register.html" target="_parent">[注册]</a> &nbsp;| 
-		<a href="login.html" target="_parent">会员登录</a>
-		</div>
-	</div>
-	<div id="globallink">
-		<ul>
-			<li><a href="home.html">首页</a></li>
-			<li><a href="credit_query.html">积分查询</a></li>
-			<li><a href="item_search.html">商品搜索</a></li>
-			<li><a href="favorite.html">收藏夹</a></li>
-			<li><a href="cart_list.html">我的购物车</a></li>
-			<li><a href="tradequery.html">交易查询</a></li>
-			<li><a href="send_notes.html">送货说明</a></li>
-			<li><a href="" class="nouseful">&nbsp;</a></li>
-		</ul>
-	</div>
+<%@ include file="header.jsp" %>
 	<div id="banner"></div>
 	<div id="main">
 		<div id="search2">
 			<div id="searchleft">
 				<img src="../image/ico_site.jpg"  id="ico_site"/>
-				网站路径：<a href="home.html">首页</a>&gt;&gt;<a href="pwd_find.html"> 找回密码</a>
+				网站路径：<a href="home.html">首页</a>&gt;&gt;<a href="item_info.html">商品信息</a>&gt;&gt;<a href="">添加评论</a>
 			</div>
 			<div id="searchright2">
 			  <input type="text" name="product" id="textInput"/>
@@ -48,21 +31,36 @@
 		  </div>
 		</div>
 		<div id="sendnote">
-			<div id="sendnotehead"><strong> 找回密码</strong></div>
+			<div id="sendnotehead"><strong>添加评论</strong></div>
 			<div id="sendnotecontent">
-
 			<form action="" method="post" enctype="multipart/form-data" name="form1">
-				<table id="itemsearch">
+				<table id="commenttable">
 				   <tr>
-					<th class="itemsearchth" >注册时填写的E-mail地址：</th>
-            		<td class="itemsearchtd1">
-					<input type="text" class="inputtext" name="email" onFocus="nextfield='webUserEntity.email'" value="" maxlength="25">
+					<th>打分：</th>
+            		<td><input type="radio" name="radiobutton" value="radiobutton"></td>
+              		<td><img src="../image/1star.JPG" alt="1星">很不喜欢</td>
+					<td><input type="radio" name="radiobutton" value="radiobutton"></td>
+              		<td><img src="../image/2star.JPG" alt="2星">不喜欢</td>
+					<td><input type="radio" name="radiobutton" value="radiobutton"></td>
+              		<td><img src="../image/3star.JPG" alt="3星">一般</td>
+					<td><input type="radio" name="radiobutton" value="radiobutton"></td>
+              		<td><img src="../image/4star.JPG" alt="4星">喜欢</td>
+					<td><input type="radio" name="radiobutton" value="radiobutton"></td>
+              		<td><img src="../image/5star.JPG" alt="5星">很喜欢</td>
+          		 </tr>
+				 <tr>
+				 	<th>评论：</th>
+					<td colspan="10">
+					<textarea name="webUserEntity.desc" class="textAreaStyle"></textarea>
 					</td>
-					<td class="itemsearchtd2">
-					<input type="button" name="button2" value="提交" onClick="checkpwdform()">
-						&nbsp;<input type="reset" name="button1" value="重填" onClick="clear()">
-						&nbsp;
+				 </tr>
+				 <tr>
+				 	<th>&nbsp;</th>
+					<td colspan="10">
+					<input type="button" class="bt2" name="button2" value="提交" onClick="checkcommentform()">
+					&nbsp;<input type="reset" class="bt2"　name="button1" value="重填" onClick="clear()">
 					</td>
+				 </tr>
         </table>
 		</form>		
 			</div>

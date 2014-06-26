@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page pageEncoding = "UTF-8"%>
 <html>
 <head>
 <title>BC2商城</title>
@@ -7,34 +8,13 @@
 </head>
 
 <body>
-<div id="container">
-	<div id="logalleft">
-		<div id="logalright">
-		<a href="register.html" target="_parent">[注册&nbsp;</a>] | 
-		<a href="" target="_parent">王小静 已登录| 
-		<a href="user_edit.html" target="_parent">个人信息维护</a> | 
-		<a href="address_daohang.html" target="_parent">地址簿</a> |
-	 	<a href="home_nologin.html" target="_parent">退出</a>
-		</div>
-	</div>
-	<div id="globallink">
-		<ul>
-			<li><a href="home.html" id="current">首页</a></li>
-			<li><a href="credit_query.html">积分查询</a></li>
-			<li><a href="item_search.html">商品搜索</a></li>
-			<li><a href="favorite.html">收藏夹</a></li>
-			<li><a href="cart_list.html">我的购物车</a></li>
-			<li><a href="tradequery.html">交易查询</a></li>
-			<li><a href="send_notes.html">送货说明</a></li>
-			<li><a href="" class="nouseful">&nbsp;</a></li>
-		</ul>
-	</div>
+<%@ include file="header.jsp" %>
 	<div id="banner"></div>
 	<div id="main">
 		<div id="search2">
 			<div id="searchleft">
 				<img src="../image/ico_site.jpg"  id="ico_site"/>
-				网站路径：<a href="home.html">首页</a>&gt;&gt;<a href="address.html"> 地址簿</a>
+				网站路径：<a href="home.html">首页</a>&gt;&gt;<a href="cart_list.html"> 购物车</a>&gt;&gt;<a href="address_edit.html"> 添加地址簿</a>
 			</div>
 			<div id="searchright2">
 			  <input type="text" name="product" id="textInput"/>
@@ -50,64 +30,19 @@
               </select>
 		  </div>
 		</div>
-		</div>
-		<div id="double1">
-			<div id="doublehead1"><strong>地址簿列表</strong></div>
-			<div id="doublecontent1">
-				<table id="doublecontenttable1">
-				<thead>
-					<tr>
-						<th></th>
-						<th>商品名</th>
-						<th>操作</th>
-					</tr>
-				</thead>
-				<tbody>
-				  <tr>
-					<td>
-						<input type="radio" name="radiobutton" value="radiobutton" checked="checked">
-					</td>		
-					<td>
-					北京市海淀区翠微路甲5号
-					</td>
-					<td>
-					<a href="address_edit.html"><img src="../image/bt_change.gif"  class="picture"/></a>&nbsp;
-					<a href="#" onClick="javascript:confirm('确定删除？')"><img src="../image/bt_delete2.gif" class="picture"/></a>
-					</td>	
-          		  </tr>
-				  <tr>
-					<td>
-					<input type="radio" name="radiobutton" value="radiobutton">
-					</td>
-					<td>
-					北京市朝阳区北四环中路229号海泰大厦</td>
-					<td>
-					<a href="address_edit.html"><img src="../image/bt_change.gif"  class="picture"/></a>&nbsp;
-					<a href="#" onClick="javascript:confirm('确定删除？')"><img src="../image/bt_delete2.gif" class="picture"/></a>
-					</td>
-				  </tr>
-				  <tr>
-				  <td></td><td></td>
-				  <td>
-				  <a href="order_confirm.html"><img src="../image/qydzb1.GIF" alt="配送至该地址"  class="picture"></a>
-				  </td>
-				  </tr>
-				 </tbody>
-            </table>
-			</div>
-			</div>
-			<div id="double2">
-			<div id="doublehead2"><strong>添加地址簿</strong></div>
-			<div id="doublecontent2">
+		<div id="sendnote">
+			<div id="sendnotehead"><strong> 添加地址簿</strong></div>
+			<div id="sendnotecontent">
+
 			<form action="" method="post" enctype="multipart/form-data" name="form1">
 				<table id="itemsearch">
 				   <tr>
-					<th class="itemsearchth" >姓&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;名：</th>
+					<th class="itemsearchth" >姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</th>
             		<td class="itemsearchtd1">
 					<input type="text" name="name" class="inputtext" onFocus="nextfield='password'" value="" maxlength="25"/>
 					</td>
 					<td class="itemsearchtd2">
-						<span class="red">*&nbsp;必输项<span class="red"></td>
+						<span class="red">*&nbsp;必输项</span></td>
           		 </tr>
 				 <tr>
 				 <th class="itemsearchth">本地/外地：</th>
@@ -126,7 +61,7 @@
 				<input type="text" class="inputtext" name="address" onFocus="nextfield='name'" value="" maxlength="25">
 					</td>
 					<td class="itemsearchtd2">
-						<span class="red">*&nbsp;必输项<span class="red">
+						<span class="red">*&nbsp;必输项</span>
 					</td>
           		 </tr>
 				 <tr>
@@ -142,23 +77,25 @@
 	              <input type="text" class="inputtext" name="phone" onFocus="nextfield='sex'" value="" maxlength="25">
 					</td>
 					<td class="itemsearchtd2">
-						<span class="red">*&nbsp;必输项<span class="red">
+						<span class="red">*&nbsp;必输项</span>
 					</td>
           		 </tr>
 				 <tr>
 				 <th></th>
-				 	<td><input type="button" class="bt2" name="button2" value="提交" onClick="checkaddressform()">
-						&nbsp;<input type="reset" class="bt2" name="button1" value="重填" onClick="clear()">
+				 	<td><input type="button" name="button22" value="提交" onClick="checkaddressnew()">
+						&nbsp;<input type="reset" name="button1" value="重填" onClick="clear()">
 					</td>
 				 </tr>
         </table>
 		</form>		
 			</div>
-
-</div>
+		</div>
+		
 	<div id="footer">
 		<span id="footerleft"> &nbsp;隐私权 | 版权 | 法律声明 | 电子邮件：admin@163.com </span>
 		<span id="footerright"> B2C商城  Power by IBM &nbsp;</span>
 	</div>
+</div>
+
 </body>
 </html>

@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page pageEncoding = "UTF-8"%>
 <html>
 <head>
 <title>BC2商城</title>
@@ -7,38 +8,17 @@
 </head>
 
 <body>
-<div id="container">
-	<div id="logalleft">
-		<div id="logalright">
-		<a href="register.html" target="_parent">[注册&nbsp;</a>] | 
-		<a href="" target="_parent">王小静 已登录| 
-		<a href="user_edit.html" target="_parent">个人信息维护</a> | 
-		<a href="address_daohang.html"" target="_parent">地址簿</a> |
-	 	<a href="home_nologin.html" target="_parent">退出</a>
-		</div>
-	</div>
-	<div id="globallink">
-		<ul>
-			<li><a href="home.html">首页</a></li>
-			<li><a href="credit_query.html">积分查询</a></li>
-			<li><a href="item_search.html">商品搜索</a></li>
-			<li><a href="favorite.html">收藏夹</a></li>
-			<li><a href="cart_list.html">我的购物车</a></li>
-			<li><a href="tradequery.html">交易查询</a></li>
-			<li><a href="send_notes.html">送货说明</a></li>
-			<li><a href="" class="nouseful">&nbsp;</a></li>
-		</ul>
-	</div>
+<%@ include file="header.jsp" %>
 	<div id="banner"></div>
 	<div id="main">
 		<div id="search2">
 			<div id="searchleft">
 				<img src="../image/ico_site.jpg"  id="ico_site"/>
-				网站路径：<a href="home.html">首页</a>&gt;&gt;<a href=""> 地址簿</a>
+				网站路径：<a href="home.jsp">首页</a>&gt;&gt;<a href=""> 地址簿</a>
 			</div>
 			<div id="searchright2">
 			  <input type="text" name="product" id="textInput"/>
-			  <input type="button" name="Submit" value="搜索" id="searchbutton" onClick="javascript:window.open('item_search_list.html','_parent','')">
+			  <input type="button" name="Submit" value="搜索" id="searchbutton" onClick="javascript:window.open('item_search_list.jsp','_parent','')">
 			</div>
 			<div id="searchright1">
 			  <select name="category" id="searchrightcategory">
@@ -71,7 +51,7 @@
 					北京市海淀区翠微路甲5号
 					</td>
 					<td>
-					<a href="address_edit.html"><img src="../image/bt_change.gif"  class="picture"/></a>&nbsp;
+					<a href="address_edit.jsp"><img src="../image/bt_change.gif"  class="picture"/></a>&nbsp;
 					<a href="#" onClick="javascript:confirm('确定删除？')"><img src="../image/bt_delete2.gif" class="picture"/></a>
 					</td>	
           		  </tr>
@@ -82,7 +62,7 @@
 					<td>
 					北京市朝阳区北四环中路229号海泰大厦</td>
 					<td>
-					<a href="address_edit.html"><img src="../image/bt_change.gif"  class="picture"/></a>&nbsp;
+					<a href="address_edit.jsp"><img src="../image/bt_change.gif"  class="picture"/></a>&nbsp;
 					<a href="#" onClick="javascript:confirm('确定删除？')"><img src="../image/bt_delete2.gif" class="picture"/></a>
 					</td>
 				  </tr>

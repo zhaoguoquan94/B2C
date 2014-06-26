@@ -35,7 +35,7 @@ public class RegisterAction extends HttpServlet {
 		String userNickName = request.getParameter("name");
 		String userPassword = request.getParameter("password");
 		NBUser user = new NBUser(1,userEmail,userNickName,userPassword,0,new Time(System.currentTimeMillis()),null);
-		if(DB.getInstance().insertNBUser(user)==1)
+		if(DB.getInstance().insertNBUser(user)!=null)
 		{
 			response.sendRedirect("/B2C/web/html/login.html");
 		}

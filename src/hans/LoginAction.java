@@ -37,14 +37,15 @@ public class LoginAction extends HttpServlet {
 		String userPassword = request.getParameter("password");
 		
 		//if(DB.getInstance().validataUser(userEmail, userPassword)==1)
-		if(userEmail.equals("a")&&userPassword.equals("a"))
+		if(userEmail.equals("admin")&&userPassword.equals("admin"))
 		{
 			request.getSession().setAttribute("userEmail",userEmail);
-			response.sendRedirect("/B2C/web/html/home.html");
+			response.sendRedirect("/B2C/web/html/home.jsp");
 		}
 		else
 		{
-			response.sendRedirect("/B2C/web/html/login.html");
+			System.out.println("LoginFail");
+			response.sendRedirect("/B2C/web/html/login.jsp");
 		}
 		
 	}

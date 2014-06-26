@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page pageEncoding = "UTF-8"%>
 <html>
 <head>
 <title>BC2商城</title>
@@ -7,25 +8,7 @@
 </head>
 
 <body>
-<div id="container">
-	<div id="logalleft">
-		<div id="logalright">
-		<a href="register.html" target="_parent">[注册]</a> &nbsp;| 
-		<a href="login.html" target="_parent">会员登录</a>
-		</div>
-	</div>
-	<div id="globallink">
-		<ul>
-			<li><a href="home.html">首页</a></li>
-			<li><a href="credit_query.html">积分查询</a></li>
-			<li><a href="item_search.html">商品搜索</a></li>
-			<li><a href="favorite.html">收藏夹</a></li>
-			<li><a href="cart_list.html">我的购物车</a></li>
-			<li><a href="tradequery.html">交易查询</a></li>
-			<li><a href="send_notes.html">送货说明</a></li>
-			<li><a href="" class="nouseful">&nbsp;</a></li>
-		</ul>
-	</div>
+<%@ include file="header.jsp" %>
 	<div id="banner"></div>
 	<div id="main">
 		<div id="search2">
@@ -51,7 +34,7 @@
 			<div id="sendnotehead"><strong> 会员登录</strong></div>
 			<div id="sendnotecontent">
 
-			<form action="" method="post" enctype="multipart/form-data" name="form1">
+			<form action="/B2C/LoginAction" method="get" name="form1">
 				<table id="itemsearch">
 				   <tr>
 					<th class="itemsearchth" >用户名：</th>
@@ -71,7 +54,7 @@
 				
 				 <tr>
 				 <th></th>
-				 	<td><input type="button" name="button2" value="登陆" onClick="checkloginform()">
+				 	<td><input type="submit" name="button2" value="登陆" onClick="checkloginform()">
 						&nbsp;<input type="reset" name="button1" value="重填" onClick="clear()">
 						&nbsp;
 					</td>

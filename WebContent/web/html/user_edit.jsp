@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page pageEncoding = "UTF-8"%>
 <html>
 <head>
 <title>BC2商城</title>
@@ -8,28 +9,7 @@
 </head>
 
 <body>
-<div id="container">
-	<div id="logalleft">
-		<div id="logalright">
-		<a href="register.html" target="_parent">[注册&nbsp;</a>] | 
-		<a href="" target="_parent">王小静 已登录| 
-		<a href="user_edit.html" target="_parent">个人信息维护</a> | 
-		<a href="address_daohang.html" target="_parent">地址簿</a> |
-	 	<a href="home_nologin.html" target="_parent">退出</a>
-		</div>
-	</div>
-	<div id="globallink">
-		<ul>
-			<li><a href="home.html">首页</a></li>
-			<li><a href="credit_query.html">积分查询</a></li>
-			<li><a href="item_search.html">商品搜索</a></li>
-			<li><a href="favorite.html">收藏夹</a></li>
-			<li><a href="cart_list.html">我的购物车</a></li>
-			<li><a href="tradequery.html">交易查询</a></li>
-			<li><a href="send_notes.html">送货说明</a></li>
-			<li><a href="" class="nouseful">&nbsp;</a></li>
-		</ul>
-	</div>
+<%@ include file="header.jsp" %>
 	<div id="banner"></div>
 	<div id="main">
 		<div id="search2">
@@ -55,12 +35,18 @@
 		<div id="sendnote">
 			<div id="sendnotehead"><strong> 个人信息修改</strong></div>
 			<div id="sendnotecontent">
-			<form action="" method="post" enctype="multipart/form-data" name="form1">
+			<form action="/B2C/UpdateUserAction" method="get" name="form1">
 				<table id="itemsearch">
 				   <tr>
 					<th class="itemsearchth" >E-mail地址：</th>
             		<td class="itemsearchtd1">
-					<input type="text" name="email" class="inputtext" onFocus="nextfield='password'" value="wangxj123@163.com" maxlength="25" disabled="disabled"/>
+            		<%
+            			String userEmail_info = (String)session.getAttribute("userEmail");
+            		    //NBUser user = DB.getInstance().getNBUserByEmail(userEmail);
+            			NBUser user = new NBUser(1,"hanjason@126.com","hans","dddddd",0,new Time(System.currentTimeMillis()),null); 
+            		%>
+            		
+					<input type="text" name="email" class="inputtext" onFocus="nextfield='password'" value=<%=user.getEmail()%> maxlength="25" disabled="disabled"/>
 					</td>
 					<td class="itemsearchtd2">
 						<span class="red">*&nbsp;不可更改</span>					</td>
@@ -68,7 +54,7 @@
 				 <tr>
 				 <th class="itemsearchth">昵&nbsp;&nbsp;&nbsp;&nbsp;称：</th>
             		<td class="itemsearchtd1">
-						<input type="text" name="name" class="inputtext"onFocus="nextfield='passwordConfirm'" value="wangxj" maxlength="25"/>
+						<input type="text" name="name" class="inputtext"onFocus="nextfield='passwordConfirm'" value=<%=user.getNickname()%> maxlength="25"/>
 					</td>
 					<td class="itemsearchtd2">
 						<span class="red">*&nbsp;(可选项)</span>
@@ -103,7 +89,7 @@
           		 </tr>
 				 <tr>
 				 <th></th>
-				 	<td><input type="button" name="button2" value="提交" onClick="checkinfoeditform()">
+				 	<td><input type="submit" name="button2" value="提交" onClick="checkinfoeditform()">
 						&nbsp;<input type="reset" name="button1" value="重填" onClick="clear()">
 						&nbsp;<input type="button" name="button3" value="返回" onClick="javascript:window.location.href='home.html'">
 					</td>

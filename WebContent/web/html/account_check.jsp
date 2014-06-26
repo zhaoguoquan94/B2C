@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page pageEncoding = "UTF-8"%>
 <html>
 <head>
 <title>BC2商城</title>
@@ -7,38 +8,17 @@
 </head>
 
 <body>
-<div id="container">
-	<div id="logalleft">
-		<div id="logalright">
-		<a href="register.html" target="_parent">[注册&nbsp;</a>] | 
-		<a href="" target="_parent">王小静 已登录| 
-		<a href="user_edit.html" target="_parent">个人信息维护</a> | 
-		<a href="address_daohang.html" target="_parent">地址簿</a> |
-	 	<a href="home_nologin.html" target="_parent">退出</a>
-		</div>
-	</div>
-	<div id="globallink">
-		<ul>
-			<li><a href="home.html">首页</a></li>
-			<li><a href="credit_query.html">积分查询</a></li>
-			<li><a href="item_search.html">商品搜索</a></li>
-			<li><a href="favorite.html">收藏夹</a></li>
-			<li><a href="cart_list.html">我的购物车</a></li>
-			<li><a href="tradequery.html">交易查询</a></li>
-			<li><a href="send_notes.html">送货说明</a></li>
-			<li><a href="" class="nouseful">&nbsp;</a></li>
-		</ul>
-	</div>
-	<div id="banner"></div>
+<%@ include file="header.jsp" %>
+<div id="banner"></div>
 	<div id="main">
 		<div id="search2">
 			<div id="searchleft">
 				<img src="../image/ico_site.jpg"  id="ico_site"/>
-				网站路径：<a href="home.html">首页</a>&gt;&gt;<a href="#">结帐</a>
+				网站路径：<a href="home.jsp">首页</a>&gt;&gt;<a href="#">结帐</a>
 			</div>
 			<div id="searchright2">
 			  <input type="text" name="product" id="textInput"/>
-			  <input type="button" name="Submit" value="搜索" id="searchbutton" onClick="javascript:window.open('item_search_list.html','_parent','')">
+			  <input type="button" name="Submit" value="搜索" id="searchbutton" onClick="javascript:window.open('item_search_list.jsp','_parent','')">
 			</div>
 			<div id="searchright1">
 			  <select name="category" id="searchrightcategory">
@@ -54,7 +34,7 @@
 		<div id="double1">
 			<div id="doublehead1"><strong><span class="red">已注册用户请登录</span></strong></div>
 			<div id="doublecontent1">
-				<form action="" method="post" enctype="multipart/form-data" name="form1">
+				<form action="/B2C/LoginAction" method="get"  name="form1">
 				<table id="itemsearch">
 				   <tr>
 					<th width="180" class="itemsearchth" >用户名：</th>
@@ -68,12 +48,12 @@
             		<td class="itemsearchtd1">
 					<input type="password" name="password" class="inputtext" value="">
 					</td>
-					<td class="itemsearchtd2"><a href="pwd_find.html" id="pwdfind"><span class="red">忘记密码？</span></a></td>
+					<td class="itemsearchtd2"><a href="pwd_find.jsp" id="pwdfind"><span class="red">忘记密码？</span></a></td>
           		 </tr>
 				
 				 <tr>
 				 <th></th>
-				 	<td><input name="button3" class="bt2" type="button" onClick="checkloginform_order()" value="登录">
+				 	<td><input name="button3" class="bt2" type="submit" onClick="checkloginform_order()" value="登录">
 						&nbsp;<input name="button4" class="bt2" type="reset" value="清空">
 						&nbsp;
 					</td>

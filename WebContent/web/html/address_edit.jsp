@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page pageEncoding = "UTF-8"%>
 <html>
 <head>
 <title>BC2商城</title>
@@ -7,38 +8,17 @@
 </head>
 
 <body>
-<div id="container">
-	<div id="logalleft">
-		<div id="logalright">
-		<a href="register.html" target="_parent">[注册&nbsp;</a>] | 
-		<a href="" target="_parent">王小静 已登录| 
-		<a href="user_edit.html" target="_parent">个人信息维护</a> | 
-		<a href="address_daohang.html"" target="_parent">地址簿</a> |
-	 	<a href="home_nologin.html" target="_parent">退出</a>
-		</div>
-	</div>
-	<div id="globallink">
-		<ul>
-			<li><a href="home.html">首页</a></li>
-			<li><a href="credit_query.html">积分查询</a></li>
-			<li><a href="item_search.html">商品搜索</a></li>
-			<li><a href="favorite.html">收藏夹</a></li>
-			<li><a href="cart_list.html">我的购物车</a></li>
-			<li><a href="tradequery.html">交易查询</a></li>
-			<li><a href="send_notes.html">送货说明</a></li>
-			<li><a href="" class="nouseful">&nbsp;</a></li>
-		</ul>
-	</div>
+<%@ include file="header.jsp" %>
 	<div id="banner"></div>
 	<div id="main">
 		<div id="search2">
 			<div id="searchleft">
 				<img src="../image/ico_site.jpg"  id="ico_site"/>
-				网站路径：<a href="home.html">首页</a>&gt;&gt;<a href="cart_list.html"> 购物车</a>&gt;&gt;<a href="address_edit.html"> 添加地址簿</a>
+				网站路径：<a href="home.jsp">首页</a>&gt;&gt;<a href="address.jsp"> 地址簿</a>&gt;&gt;<a href=""> 地址簿编辑</a>
 			</div>
 			<div id="searchright2">
 			  <input type="text" name="product" id="textInput"/>
-			  <input type="button" name="Submit" value="搜索" id="searchbutton" onClick="javascript:window.open('item_search_list.html','_parent','')">
+			  <input type="button" name="Submit" value="搜索" id="searchbutton" onClick="javascript:window.open('item_search_list.jsp','_parent','')">
 			</div>
 			<div id="searchright1">
 			  <select name="category" id="searchrightcategory">
@@ -50,16 +30,17 @@
               </select>
 		  </div>
 		</div>
+		</div>
 		<div id="sendnote">
-			<div id="sendnotehead"><strong> 添加地址簿</strong></div>
+			<div id="sendnotehead"><strong> 编辑地址簿</strong></div>
 			<div id="sendnotecontent">
 
 			<form action="" method="post" enctype="multipart/form-data" name="form1">
 				<table id="itemsearch">
 				   <tr>
-					<th class="itemsearchth" >姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</th>
+					<th class="itemsearchth" >姓&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;名：</th>
             		<td class="itemsearchtd1">
-					<input type="text" name="name" class="inputtext" onFocus="nextfield='password'" value="" maxlength="25"/>
+					<input type="text" name="name" class="inputtext" onFocus="nextfield='password'" value="王小静" maxlength="25"/>
 					</td>
 					<td class="itemsearchtd2">
 						<span class="red">*&nbsp;必输项</span></td>
@@ -78,7 +59,7 @@
 				 <tr>
 				 <th class="itemsearchth"><span class="inputHeader">通讯地址：</span></th>
             		<td class="itemsearchtd1">
-				<input type="text" class="inputtext" name="address" onFocus="nextfield='name'" value="" maxlength="25">
+				<input type="text" class="inputtext" name="address" onFocus="nextfield='name'" value="北京市海淀区翠微路甲5号" maxlength="25">
 					</td>
 					<td class="itemsearchtd2">
 						<span class="red">*&nbsp;必输项</span>
@@ -94,7 +75,7 @@
 				 <tr>
 				 <th class="itemsearchth"><span class="inputHeader">手机号码：</span></th>
             		<td class="itemsearchtd1">
-	              <input type="text" class="inputtext" name="phone" onFocus="nextfield='sex'" value="" maxlength="25">
+	              <input type="text" class="inputtext" name="phone" onFocus="nextfield='sex'" value="13812345678" maxlength="25">
 					</td>
 					<td class="itemsearchtd2">
 						<span class="red">*&nbsp;必输项</span>
@@ -102,8 +83,9 @@
           		 </tr>
 				 <tr>
 				 <th></th>
-				 	<td><input type="button" name="button22" value="提交" onClick="checkaddressnew()">
-						&nbsp;<input type="reset" name="button1" value="重填" onClick="clear()">
+				 	<td><input type="button" class="bt2" name="button2" value="提交" onClick="checkaddressform()">
+						&nbsp;<input type="reset" class="bt2" name="button1" value="重填" onClick="clear()">
+						&nbsp;<input type="button" class="bt2" name="button3" value="返回" onClick="javascript:window.location.href='address.jsp'">
 					</td>
 				 </tr>
         </table>
