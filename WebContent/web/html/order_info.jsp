@@ -133,16 +133,16 @@
           		  <%
           		  	for (NBOrderInfo eachOrderInfo : orderList){
           		  		NBProduct product = db.getNBProductByID(eachOrderInfo.getProductID());
-          		  		int discount = new BigDecimal(product.getPrice()).
-          		  		int vipPrice = product.get
+          		  		int discount = (int)(product.getDiscount()*100);
+          		  		double vipPrice = product.getDiscount()* product.getPrice();
           		  %>
 				  <tr>
             		<td><%= product.getId() %></td>
-					<td>大学物理学.第一册：力学（第2版)<%= product.getName() %></td>
-					<td>￥<%=product.getPrice() %></td>
+					<td><%= product.getName() %></td>
+					<td>￥<%=String.format("%%.2f", product.getPrice()) %></td>
 					<td><%=discount %>折</td>
-					<td>￥<%= %></td>
-					<td>1</td>
+					<td>￥<%=String.format("%.2f", vipPrice) %></td>
+					<td><%=eachOrderInfo.getNumber() %></td>
           		  </tr>
           		  <%} %>
 				 </tbody>
