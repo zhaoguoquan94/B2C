@@ -34,7 +34,7 @@
 	
 	<%
 	DB db = DB.getInstance();
-	NBUser user = db.getUserByEmail((String)session.getAttribute("userEmail"));
+	NBUser user = db.getNBUserByEmail((String)session.getAttribute("userEmail"));
 	ArrayList<NBOrder> orderList = db.getNBOrdersByUserEmail((String)session.getAttribute("userEmail"));
 	%>
 	
@@ -75,7 +75,10 @@
 					</tr>
 				</thead>
 				<tbody>
-				<%for (NBOrder order : orderList){ %>
+				<%
+				System.out.println(orderList.toString());
+				for (NBOrder order : orderList){ 
+				%>
 				  <tr>
             		<td>
 						<a href="/servlet/Queren?orderID=<%=order.getOrderID()%>"><%=order.getOrderID() %></a>

@@ -1,4 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="model.*,Database.*"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="javax.ws.rs.CookieParam"%>
+<%@page pageEncoding="UTF-8" %>
+<%@page import ="javax.servlet.http.Cookie" %>
 <html>
 <head>
 <title>BC2商城</title>
@@ -52,6 +57,12 @@
 		<div id="sendnote">
 			<div id="sendnotehead"><strong>购物车内的商品</strong></div>
 			<div id="sendnotecontent">
+			<%
+				DB db = DB.getInstance();
+				double totalPrice = 0;
+				ArrayList<Integer> cart = (ArrayList<Integer>)session.getAttribute("cart");
+				if (!cart.isEmpty()){			
+			%>
 			<form action="" method="post" enctype="multipart/form-data" name="form1">
 				<table id="favorite">
 				<thead>
@@ -66,53 +77,30 @@
 					</tr>
 				</thead>
 				<tbody>
+				<%for (int i = 0;i< cart.size();i++){
+					NBProduct product = db.getNBProductByID(cart.get(i));
+					double vipPrice = product.getPrice()*product.getDiscount();
+					totalPrice += vipPrice;
+				 %>
+				 
 				  <tr>
-            		<td>
-						1					</td>
-					<td>
-						<a href="item_info.html"><span>大学物理学.第四册：波动与光学（第2版）</span></a>					</td>
-					<td>￥10.00</td>
-					<td>
-						￥8.50					</td>
-					<td>
-						￥1.50					</td>
-					<td>
-						<input type="text" name="itemNo1" size="1" value="1"></td>
-					<td>
-						<a href="favorite.html"><img src="../image/collection.gif"  class="picture"/></a>&nbsp;<img src="../image/delete_item.gif" class="picture"/></td>
+            		<td><%=i+1 %></td>
+					<td><span><%=product.getName() %> </span></td>
+					<td>￥<%=String.format("%.2f", product.getPrice()) %></td>
+					<td>￥<%=String.format("%.2f", vipPrice)  %></td>
+					<td>￥<%=String.format("%.2f", product.getPrice()-vipPrice) %>></td>
+					<td><input type="text" name="itemNo<%=i %>" size="1" value="1"></td>
+					<td><a href="B2C/servlet/Cart_delt_serv?itemdeleted=<%=i %>" ><img src="../image/delete_item.gif" class="picture"/></a></td>
           		  </tr>
-				  <tr>
-            		<td>
-						2					</td>
-					<td>
-					<a href=""><span>大学物理学.第一册：力学（第2版）</span></a></td>
-					<td> 
-						￥16.00					</td>
-					<td>
-						￥13.60					</td>
-					<td>
-						￥2.40					</td>
-					<td><input type="text" name="itemNo2" size="1" value="1">			</td>
-					<td>
-						<a href="favorite.html"><img src="../image/collection.gif"  class="picture"/></a>&nbsp;<img src="../image/delete_item.gif" class="picture"/></td>
-					</tr>
+          		  <%} %>
 					<tr>
-            		<td>
-					</td>
-					<td>
-					</td>
-					<td> 
-					</td>
-					<td class="red">
-						总价
-					</td>
-					<td class="red">
-						￥22.10
-					</td>
+            		<td></td>
 					<td></td>
-					<td>
-						<input type="button" name="continue" value="继续购物" onClick="javascript:window.location.href='home.html'">&nbsp;
-		     <input type="button" name="edit2" value="更新" onClick="checkitemno()">					  					</td>
+					<td></td>
+					<td class="red">总价</td>
+					<td class="red">￥<%=String.format(".2f", totalPrice) %></td>
+					<td></td>
+					<td></td>
 					</tr>
 					<tr>
             			<td></td>
@@ -122,11 +110,16 @@
 						<td></td>
 						<td></td>
 					<td>
-					<a href="order_confirm.html"><img src="../image/check_account.gif" class="picture"/></a>				  					</td>
+					<a href="order_confirm.html"><img src="../image/check_account.gif" class="picture"/></a></td>
 					</tr>
 				 </tbody>
             </table>
 			</form> 
+			<%}
+			else{
+			 %>
+			 您的购物车空空如也，快去选购吧<br/>
+			 <%} %>
 			</div>
 		</div>
 		
@@ -135,6 +128,5 @@
 		<span id="footerright"> B2C商城  Power by IBM &nbsp;</span>
 	</div>
 </div>
-
 </body>
 </html>
